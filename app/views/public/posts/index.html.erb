@@ -2,3 +2,16 @@
 
 <h1>ログアウトはこちらです！</h1>
 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<br>
+<%= link_to '新規投稿', new_post_path %>
+
+<h2>POST</h2>
+  <table class="table table-hover table-inverse">
+    <tbody>
+      <% @posts.each do |posts| %>
+        <tr>
+          <td><%= link_to post_path(posts.id) do %><%= posts.post_text %><% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
