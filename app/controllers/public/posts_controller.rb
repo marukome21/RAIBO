@@ -29,7 +29,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params #postのストロングパラメータ
-    params.require(:post).permit(:post_text) #パラメーターのキー
+    params.require(:post).permit(:post_text, :image) #パラメーターのキー
   end
 
 end

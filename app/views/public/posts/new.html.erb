@@ -1,12 +1,9 @@
 <h1>ここは新規投稿です！</h1>
 
 <%= form_with model: @post, local: true do |form| %>
-
-<p><%= form.label :post_text %><br>
-<%= form.text_area :post_text %> <!--bodyの入力フォーム生成-->
-</p>
-
-<p><%= form.submit %> <!--送信ボタンを生成-->
-</p>
-
+  <%= form.label :post_text %><br>
+  <%= form.text_area :post_text %> <!--bodyの入力フォーム生成-->
+  <<%= form.label :images %><br>
+  <%= form.file_field :image, accept: "image/*" %>  <!--画像アップロード機能-->
+  <%= form.submit %> <!--送信ボタンを生成-->
 <% end %>

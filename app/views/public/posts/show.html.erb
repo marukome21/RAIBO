@@ -1,9 +1,10 @@
+<br>
+<h1><%= link_to "⇚", posts_path %></h1>
 <h2>POST</h2>
-  <table class="table table-hover table-inverse">
-    <tbody>
-        <tr>
-          <td><%= @post.post_text %></td>
-          <td><%= link_to "削除", post_path(@post.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "本当に消しますか？"} %></td>
-        </tr>
-    </tbody>
-  </table>
+<%= @post.post_text %><br>
+<% if @post.image.attached? %>
+  <%= image_tag @post.image, size: "800x600" %><br>
+<%else%>
+
+<%end%>
+<%= link_to "削除", post_path(@post.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "本当に消しますか？"} %>
