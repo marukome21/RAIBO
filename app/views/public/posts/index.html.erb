@@ -3,7 +3,6 @@
 <h1>ログアウトはこちらです！</h1>
 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
 <br>
-<%= link_to '新規投稿', new_post_path %>
 
 <h2>POST</h2>
   <% @posts.each do |posts| %>
