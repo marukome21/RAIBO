@@ -1,0 +1,12 @@
+<h1><%= link_to "⇚", posts_path %></h1>
+<h1>ここはマイページ！</h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><%= image_tag @user.get_user_image(200,200) %><br><%= @user.user_name %></td>
+      <td><%= @user.profile %></td>
+    </tr>
+  </tbody>
+</table>
+<h3><%= link_to "プロフィール編集", edit_users_information_path %></h3>
