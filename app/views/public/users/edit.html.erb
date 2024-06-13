@@ -1,0 +1,26 @@
+<h1><%= link_to "⇚", users_my_page_path %></h1>
+<h1>ここはプロフィール変更ページ！</h1>
+
+<h3 class="col-md-3 my-5 text-center">プロフィール編集</h3>
+      <table class="table table-borderless">
+        <%= form_with model: @user, url: update_users_information_path, method: :patch do |f| %>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= f.text_field :user_name %></td>
+        </tr>
+        <tr>
+          <td>プロフィール</td>
+          <td><%= f.text_field :profile %></td>
+        </tr>
+        <tr>
+          <td>プロフィール画像</td>
+          <td><%= f.file_field :user_image, placeholder: "プロフィール画像", accept: "image/*" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "プロフィール変更を保存", class:"btn btn-success" %></td>
+          <td><%= link_to "退会する", users_unsubscribe_path, class:"btn btn-danger" %></td>
+        </tr>
+        <% end %>
+      </table>
