@@ -17,4 +17,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :index, :create, :destroy, :new]
   end
 
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 end
