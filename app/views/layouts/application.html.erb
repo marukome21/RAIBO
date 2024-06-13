@@ -18,9 +18,11 @@
             <li class="nav-item">
               <%= link_to "投稿一覧", posts_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-              <%= link_to '新規投稿', new_post_path, class: "nav-link" %>
-            </li>
+            <% if current_user.user_name != "guestuser" %>
+              <li class="nav-item">
+                <%= link_to '新規投稿', new_post_path, class: "nav-link" %>
+              </li>
+            <% end %>
             <li class="nav-item">
               <%= link_to 'マイページ', users_my_page_path, class: "nav-link" %>
             </li>
