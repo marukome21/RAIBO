@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :edit, :update, :unsubscribe, :withdraw]
 
   def show
     @user = current_user
@@ -15,10 +16,15 @@ class Public::UsersController < ApplicationController
   end
 
   def unsubscribe
-
+    @user = current_user
   end
 
   def withdraw
+    @user = current_user
+    @user.update(is_active: false)
+    reset_session
+    #flash[:withdraw] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
   private

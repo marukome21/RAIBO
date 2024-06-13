@@ -1,3 +1,4 @@
+<h1><%= link_to "⇚", users_my_page_path %></h1>
 <h1>ここはプロフィール変更ページ！</h1>
 
 <h3 class="col-md-3 my-5 text-center">プロフィール編集</h3>
@@ -19,7 +20,7 @@
         <tr>
           <td></td>
           <td><%= f.submit "プロフィール変更を保存", class:"btn btn-success" %></td>
-          <td><!--%= link_to "退会する", customers_unsubscribe_path, class:"btn btn-danger" %--></td>
+          <td><%= link_to "退会する", users_unsubscribe_path, class:"btn btn-danger" %></td>
         </tr>
         <% end %>
       </table>
