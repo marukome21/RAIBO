@@ -7,4 +7,7 @@
 <%else%>
 
 <%end%>
-<%= link_to "削除", post_path(@post.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "本当に消しますか？"} %>
+
+<% if @post.user == current_user %>
+  <%= link_to "削除", post_path(@post.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "本当に消しますか？"} %>
+<%end%>

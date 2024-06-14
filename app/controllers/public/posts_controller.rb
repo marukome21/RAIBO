@@ -5,9 +5,13 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)   #データを新規登録するためのインスタンス生成
-    @post.save                      #データをデータベースに保存するためのsaveメソッド実行
-    redirect_to action: 'index'     #トップ画面へリダイレクト
+
+    @post = current_user.posts.build(post_params)       #データを新規登録するためのインスタンス生成
+    if @post.save                       #データをデータベースに保存するためのsaveメソッド実行
+      redirect_to action: 'index'       #トップ画面へリダイレクト
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -16,6 +20,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    
   end
 
 
