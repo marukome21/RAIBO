@@ -11,6 +11,8 @@
 </table>
 <% if current_user.user_name != "guestuser" %>
 <div class='row'>
-  <h3><%= link_to "プロフィール編集", edit_users_information_path, class: "btn btn-outline-secondary btn-block fas fa-user-cog" %></h3>
+  <h3><%= link_to "プロフィール編集", edit_users_information_path, class: "btn btn-outline-secondary btn-block" %></h3>
 </div>
+<% else %>
+
 <% end %>
