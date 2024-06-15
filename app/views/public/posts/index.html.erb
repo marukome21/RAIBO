@@ -1,12 +1,35 @@
-<h1>投稿一覧です！</h1>
-
-<h2>POST</h2>
+<h2 class="text-center">POST</h2>
+<div class="card-list-container py-5">
   <% @posts.each do |posts| %>
-    <%= link_to post_path(posts.id) do %><%= posts.post_text %><% end %><br>
-    <% if posts.image.attached? %>
-      <%= image_tag posts.image, size: "400x300" %><br>
-    <%else%>
-
-    <%end%>
-    <br>
+    <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <div class="card-body">
+        <div class="card-title">
+          <div class="row">
+            <div class="col-10">
+              <%= image_tag posts.user.get_user_image(100,100), class: "mt-3 rounded-circle"; %>
+              <strong><%= posts.user.user_name %></strong>
+            </div>
+            <div class="text-right pt-4">
+              <% if posts.user == current_user %>
+                <%= link_to "削除", post_path(posts.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "本当に消しますか？"} %>
+              <%end%>
+            </div>
+          </div>
+          <%= link_to post_path(posts.id) do %>
+            <div class="row py-5">
+              <div class="card-text pl-3">
+                <%= posts.post_text %>
+              </div>
+            </div>
+            <div class="row">
+              <% if posts.image.attached? %>
+                <%= image_tag posts.image, class: "card-img-top"; %>
+              <%else%>
+              <%end%>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
+</div>
