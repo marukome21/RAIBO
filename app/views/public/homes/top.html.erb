@@ -1,2 +1,22 @@
-<h2>ここはRAIBOのトップページです</h2>
-<h3>ログイン、新規登録はこちらから！</h3>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col text-center">
+      <h1><strong>RAIBO</strong></h1>
+      <br>
+      <h3>相変わらず、頑ですね</h3><br>
+      <h3>でも、警句は忘れません</h3><br>
+      <h3>…我ら肉と野菜によって人となり、体を作り、また体を失う</h3><br>
+      <h3>知らぬ者よ</h3><br>
+      <h3>かねてカロリーを恐れたまえ</h3>
+      <br>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-success my-2" %>
+      <br>
+      <h7>または</h7>
+      <br>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-info my-2" %>
+      <br>
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: "btn btn-secondary mt-5", method: :post %>
+    </div>
+    <br>
+  </div>
+</div>

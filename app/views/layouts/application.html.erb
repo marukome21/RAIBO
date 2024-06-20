@@ -6,11 +6,39 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/9a6298eeee.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+    <% if user_signed_in? %>
+      <header>
+        <nav class="navbar pm-5 img-thumbnail " style="background-color: #adb5bd;">
+          <div class="container-fluid justify-content-center">
+            <button class="btn btn-outline-emphasis me-2" type="button">
+              <%= link_to posts_path, class: "nav-link" do %><i class="fa-solid fa-house"></i><% end %>
+            </button>
+            <% if current_user.user_name != "guestuser" %>
+              <button class="btn btn-outline-emphasis me-2" type="button">
+                <%= link_to new_post_path, class: "nav-link" do %><i class="fa-solid fa-circle-plus"></i><% end %>
+              </button>
+            <% end %>
+            <button class="btn btn-outline-emphasis me-2" type="button">
+              <%= link_to users_my_page_path, class: "nav-link" do %><i class="fa-solid fa-user"></i><% end %>
+            </button>
+            <button class="btn btn-outline-emphasis me-2" type="button">
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %><i class="fa-solid fa-right-from-bracket"></i><% end %>
+            </button>
+          </div>
+        </nav>
+      </header>
+    <% end %>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+
+    </footer>
   </body>
 </html>
