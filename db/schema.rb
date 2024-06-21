@@ -53,30 +53,30 @@ ActiveRecord::Schema.define(version: 2024_06_11_104955) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "user_id"
-    t.string "post_id"
+    t.integer "user_id"
+    t.integer "post_id"
     t.text "comment_text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "followings", force: :cascade do |t|
-    t.string "follower_id"
-    t.string "followee_id"
+    t.integer "follower_id"
+    t.integer "followee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "likes", force: :cascade do |t|
-    t.string "user_id"
-    t.string "post_id"
-    t.string "comment_id"
+    t.integer "user_id"
+    t.integer "post_id"
+    t.integer "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "user_id"
+    t.integer "user_id"
     t.text "post_text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -5,7 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_one_attached :user_image
+
+
+
 
   def get_user_image(width, height)
     unless user_image.attached?
