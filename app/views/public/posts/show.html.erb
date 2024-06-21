@@ -27,7 +27,7 @@
           <% else %>
           <% end %>
         </div>
-        <div class="row py-5">
+        <div class="row">
           <% if @post.liked_by?(current_user) %>
             <p>
               <%= link_to post_likes_path(@post), method: :delete do %>
@@ -40,6 +40,21 @@
                 ♡<%= @post.likes.count %> いいね
               <% end %>
             </p>
+          <% end %>
+        </div>
+        <div class="row py-5">
+          <%= form_with model: [@post, @comment] do |f| %>
+            <%= f.text_area :comment_text, rows: '5', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+          <p>コメント件数：<%= @post.comments.count %></p>
+          <% @post.comments.each do |comment| %>
+            <p><%= image_tag comment.user.get_user_image(100,100) %></p>
+            <%= comment.user.user_name %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_text %>
+            <% if comment.user == current_user %>
+              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+            <% end %>
           <% end %>
         </div>
       </div>

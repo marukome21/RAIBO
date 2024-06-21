@@ -30,6 +30,24 @@
               <%end%>
             </div>
           <% end %>
+          <div class="row">
+            <% if posts.liked_by?(current_user) %>
+              <p>
+                <%= link_to post_likes_path(posts), method: :delete do %>
+                  ♥<%= posts.likes.count %> いいね
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to post_likes_path(posts), method: :post do %>
+                  ♡<%= posts.likes.count %> いいね
+                <% end %>
+              </p>
+            <% end %>
+          </div>
+          <div class="row">
+            <%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %>
+          </div>
         </div>
       </div>
     </div>

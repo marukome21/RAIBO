@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   scope module: 'public' do
     resources :posts, only: [:show, :index, :create, :destroy, :new] do
+      resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
   end
