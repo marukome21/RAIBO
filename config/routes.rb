@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'users/my_page/:id', to: 'public/users#show', as: :users_my_page
 
 
+  get 'search/', to: 'searches#search', as: :search #検索ページ
+
 
 
 

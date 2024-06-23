@@ -29,9 +29,15 @@ class User < ApplicationRecord
   end
 # フォローしているか判定
   def following?(user)
-    followings.include?(user)
+    followings.exists?(followee_id: user.id)
   end
 
+
+
+  # 検索方法分岐
+  def self.looks(search, word)
+      @user = User.where("user_name LIKE?","%#{word}%")
+  end
 
 
 

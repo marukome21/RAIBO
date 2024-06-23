@@ -1,7 +1,7 @@
 <h2 class="text-center">POST</h2>
 <div class="card-list-container py-5">
   <% @posts.each do |posts| %>
-    <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="card mx-auto mt-4 shadow-lg" style="width: 70%;">
       <div class="card-body">
         <div class="card-title">
           <div class="row">
@@ -14,7 +14,11 @@
             <div class="text-right pt-4">
               <% if posts.user == current_user %>
                 <%= link_to "削除", post_path(posts.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "本当に消しますか？"} %>
-              <%end%>
+              <% elsif current_user.following?(posts.user) %>
+                <%= link_to "フォロー中", user_followings_path(posts.user.id), method: :delete, class: 'btn btn-secondary' %>
+              <% else %>
+                <%= link_to "フォロー", user_followings_path(posts.user.id), method: :post, class: 'btn btn-success' %>
+              <% end %>
             </div>
           </div>
           <%= link_to post_path(posts.id) do %>
