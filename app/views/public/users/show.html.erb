@@ -10,7 +10,7 @@
           </div>
           <div class="col-2 text-right pt-4">
             <% if current_user.user_name == "guestuser" %>
-            <% elsif current_user.user_name == @user.user_name %>
+            <% elsif current_user == @user %>
               <%= link_to edit_users_information_path, class: "btn btn-outline-secondary btn-block" do %><i class="fa-solid fa-user-pen"></i><% end %>
             <% else %>
             <% end %>
@@ -31,13 +31,16 @@
             <%= @user.followers.count %>
           <% end %>
         </div>
-        <div class='row'>
-          <% if current_user.following?(@user) %>
-            <%= link_to "フォロー外す", user_followings_path(@user.id), method: :delete, class: 'btn btn-primary' %>
-          <% else %>
-            <%= link_to "フォローする", user_followings_path(@user.id), method: :post, class: 'btn btn-success' %>
-          <% end %>
-        </div>
+        <% if current_user == @user %>
+        　<% else %>
+          <div class='row'>
+            <% if current_user.following?(@user) %>
+              <%= link_to "フォロー中", user_followings_path(@user.id), method: :delete, class: 'btn btn-secondary' %>
+            <% else %>
+              <%= link_to "フォローする", user_followings_path(@user.id), method: :post, class: 'btn btn-success' %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
