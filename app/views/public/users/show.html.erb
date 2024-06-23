@@ -23,19 +23,19 @@
         </div>
         <div class="row py-5">
           follows
-          <%= link_to followindex_path(id: @user.id) do %>
+          <%= link_to user_followindex_path(@user.id) do %>
             <%= @user.relationships.count %>
           <% end %>
           followers
-          <%= link_to followers_path(@user.id) do %>
+          <%= link_to user_followers_path(@user.id) do %>
             <%= @user.followers.count %>
           <% end %>
         </div>
         <div class='row'>
           <% if current_user.following?(@user) %>
-            <%= link_to "フォロー外す", followings_path(@user.id), method: :delete, class: 'btn btn-primary' %>
+            <%= link_to "フォロー外す", user_followings_path(@user.id), method: :delete, class: 'btn btn-primary' %>
           <% else %>
-            <%= link_to "フォローする", followings_path(@user.id), method: :post, class: 'btn btn-success' %>
+            <%= link_to "フォローする", user_followings_path(@user.id), method: :post, class: 'btn btn-success' %>
           <% end %>
         </div>
       </div>

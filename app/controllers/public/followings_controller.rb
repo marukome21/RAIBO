@@ -11,7 +11,7 @@ class Public::FollowingsController < ApplicationController
     redirect_to request.referer
   end
   # フォロー一覧
-  def index
+  def followings
     user = User.find(params[:user_id])
     @users = user.relationships
   end

@@ -17,12 +17,16 @@ Rails.application.routes.draw do
   get 'users/my_page/:id', to: 'public/users#show', as: :users_my_page
 
 
-  get 'followings' => 'followings#followings', as: 'followindex'
-  get 'followers' => 'followings#followers', as: 'followers'
-  resource :followings, only: [:create, :destroy]
+
+
 
 
   scope module: 'public' do
+    resources :users, only:[] do
+      get 'followings' => 'followings#followings', as: 'followindex'
+      get 'followers' => 'followings#followers', as: 'followers'
+      resource :followings, only: [:create, :destroy]
+    end
     resources :posts, only: [:show, :index, :create, :destroy, :new] do
       resources :comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
