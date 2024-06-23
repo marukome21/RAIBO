@@ -1,4 +1,4 @@
-<h1><%= link_to "⇚", users_my_page_path(@user) %></h1>
+<h1 style="padding-top: 70px;"><%= link_to "⇚", users_my_page_path(@user) %></h1>
 
 <h3 class="col-md-3 my-5 text-center">プロフィール編集</h3>
   <%= form_with model: @user, url: update_users_information_path, method: :patch do |f| %>
