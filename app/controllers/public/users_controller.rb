@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]  #before_actionでeditアクション実行前に処理を行う
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -13,7 +13,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
-    redirect_to users_my_page_path
+    redirect_to users_my_page_path(current_user.id)
   end
 
   def unsubscribe

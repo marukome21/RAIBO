@@ -25,7 +25,7 @@
               </button>
             <% end %>
             <button class="btn btn-outline-emphasis me-2" type="button">
-              <%= link_to users_my_page_path, class: "nav-link" do %><i class="fa-solid fa-user"></i><% end %>
+              <%= link_to users_my_page_path(current_user.id), class: "nav-link" do %><i class="fa-solid fa-user"></i><% end %>
             </button>
             <button class="btn btn-outline-emphasis me-2" type="button">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %><i class="fa-solid fa-right-from-bracket"></i><% end %>

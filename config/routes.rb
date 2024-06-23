@@ -14,11 +14,23 @@ Rails.application.routes.draw do
   patch 'users/information', to: 'public/users#update', as: 'update_users_information'
   get 'users/unsubscribe', to: 'public/users#unsubscribe', as: :users_unsubscribe
   patch 'users/withdraw', to: 'public/users#withdraw', as: :users_withdraw
-  get 'users/my_page', to: 'public/users#show', as: :users_my_page
+  get 'users/my_page/:id', to: 'public/users#show', as: :users_my_page
+
+
+
+
 
 
   scope module: 'public' do
-    resources :posts, only: [:show, :index, :create, :destroy, :new]
+    resources :users, only:[] do
+      get 'followings' => 'followings#followings', as: 'followindex'
+      get 'followers' => 'followings#followers', as: 'followers'
+      resource :followings, only: [:create, :destroy]
+    end
+    resources :posts, only: [:show, :index, :create, :destroy, :new] do
+      resources :comments, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy]
+    end
   end
 
   devise_scope :user do

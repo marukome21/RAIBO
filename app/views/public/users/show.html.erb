@@ -9,7 +9,8 @@
             <%= image_tag @user.get_user_image(200,200), class: "mt-3 rounded-circle img-thumbnail"; %><br><strong><%= @user.user_name %></strong>
           </div>
           <div class="col-2 text-right pt-4">
-            <% if current_user.user_name != "guestuser" %>
+            <% if current_user.user_name == "guestuser" %>
+            <% elsif current_user.user_name == @user.user_name %>
               <%= link_to edit_users_information_path, class: "btn btn-outline-secondary btn-block" do %><i class="fa-solid fa-user-pen"></i><% end %>
             <% else %>
             <% end %>
@@ -19,6 +20,23 @@
           <div class="card-text pl-3">
             <h4><%= @user.profile %></h4>
           </div>
+        </div>
+        <div class="row py-5">
+          follows
+          <%= link_to user_followindex_path(@user.id) do %>
+            <%= @user.relationships.count %>
+          <% end %>
+          followers
+          <%= link_to user_followers_path(@user.id) do %>
+            <%= @user.followers.count %>
+          <% end %>
+        </div>
+        <div class='row'>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", user_followings_path(@user.id), method: :delete, class: 'btn btn-primary' %>
+          <% else %>
+            <%= link_to "フォローする", user_followings_path(@user.id), method: :post, class: 'btn btn-success' %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
-<h1><%= link_to "⇚", users_my_page_path %></h1>
+<h1><%= link_to "⇚", users_my_page_path(@user) %></h1>
 
 <h3 class="col-md-3 my-5 text-center">プロフィール編集</h3>
+  <%= form_with model: @user, url: update_users_information_path, method: :patch do |f| %>
   <table class="table table-borderless">
-    <%= form_with model: @user, url: update_users_information_path, method: :patch do |f| %>
     <tr>
       <td>ユーザー名</td>
       <td><%= f.text_field :user_name, class: "form-control" %></td>
@@ -23,5 +23,5 @@
         <%= link_to "退会する", users_unsubscribe_path, class:"btn btn-danger ml-3" %>
       </td>
     </tr>
-    <% end %>
   </table>
+  <% end %>
