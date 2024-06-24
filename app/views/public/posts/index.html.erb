@@ -1,4 +1,5 @@
 <h2 class="text-center" style="padding-top: 100px;">POST</h2>
+
 <div class="card-list-container">
   <% @posts.each do |posts| %>
     <div class="card mx-auto mt-5 shadow-lg" style="width: 70%;">
@@ -34,23 +35,19 @@
               <%end%>
             </div>
           <% end %>
-          <div class="row">
+          <div class="row" style="display: flex; justify-content: center; align-items: center;">
             <% if posts.liked_by?(current_user) %>
-              <p>
-                <%= link_to post_likes_path(posts), method: :delete do %>
-                  ♥<%= posts.likes.count %> いいね
-                <% end %>
-              </p>
+              <%= link_to post_likes_path(posts), method: :delete do %>
+                <i class="fa-solid fa-heart"></i><%= posts.likes.count %>
+              <% end %>
             <% else %>
-              <p>
-                <%= link_to post_likes_path(posts), method: :post do %>
-                  ♡<%= posts.likes.count %> いいね
-                <% end %>
-              </p>
+              <%= link_to post_likes_path(posts), method: :post do %>
+                <i class="fa-regular fa-heart"></i><%= posts.likes.count %>
+              <% end %>
             <% end %>
-          </div>
-          <div class="row">
-            <%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %>
+            <%= link_to post_path(posts.id), class: "ml-4" do %>
+              <i class="fa-regular fa-comment"></i><%= posts.comments.count %>
+            <% end %>
           </div>
         </div>
       </div>
