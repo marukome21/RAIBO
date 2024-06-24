@@ -23,7 +23,7 @@
         </div>
         <div class="row py-5">
           フォロー
-          <%= link_to user_followindex_path(@user.id) do %>
+          <%= link_to user_follow_index_path(@user.id) do %>
             <%= @user.relationships.count %>
           <% end %>
           フォロワー
@@ -46,7 +46,13 @@
   </div>
 </div>
 
-<h2 class="text-center">POST</h2>
+<div>
+  <%= link_to user_likes_index_path(@user.id) do %>
+    いいね一覧
+  <% end %>
+</div>
+
+<h2 class="text-center">POST一覧</h2>
 <div class="card-list-container py-5">
   <% @posts.each do |posts| %>
     <div class="card w-51 mx-auto mt-4 shadow-lg">
