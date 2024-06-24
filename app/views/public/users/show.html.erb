@@ -1,4 +1,4 @@
-<h2><%= link_to "⇚", posts_path %> </h2>
+<h1 style="padding-top: 70px;"><%= link_to "⇚", posts_path %> </h1>
 
 <div class="card-list-container py-5">
   <div class="card w-51 mx-auto mt-4 shadow-lg">
@@ -10,7 +10,7 @@
           </div>
           <div class="col-2 text-right pt-4">
             <% if current_user.user_name == "guestuser" %>
-            <% elsif current_user.user_name == @user.user_name %>
+            <% elsif current_user == @user %>
               <%= link_to edit_users_information_path, class: "btn btn-outline-secondary btn-block" do %><i class="fa-solid fa-user-pen"></i><% end %>
             <% else %>
             <% end %>
@@ -23,7 +23,7 @@
         </div>
         <div class="row py-5">
           フォロー
-          <%= link_to user_followindex_path(@user.id) do %>
+          <%= link_to user_follow_index_path(@user.id) do %>
             <%= @user.relationships.count %>
           <% end %>
           フォロワー
@@ -31,19 +31,28 @@
             <%= @user.followers.count %>
           <% end %>
         </div>
-        <div class='row'>
-          <% if current_user.following?(@user) %>
-            <%= link_to "フォロー外す", user_followings_path(@user.id), method: :delete, class: 'btn btn-primary' %>
-          <% else %>
-            <%= link_to "フォローする", user_followings_path(@user.id), method: :post, class: 'btn btn-success' %>
-          <% end %>
-        </div>
+        <% if current_user == @user %>
+        　<% else %>
+          <div class='row'>
+            <% if current_user.following?(@user) %>
+              <%= link_to "フォロー中", user_followings_path(@user.id), method: :delete, class: 'btn btn-secondary' %>
+            <% else %>
+              <%= link_to "フォローする", user_followings_path(@user.id), method: :post, class: 'btn btn-success' %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<h2 class="text-center">POST</h2>
+<div>
+  <%= link_to user_likes_index_path(@user.id) do %>
+    いいね一覧
+  <% end %>
+</div>
+
+<h2 class="text-center">POST一覧</h2>
 <div class="card-list-container py-5">
   <% @posts.each do |posts| %>
     <div class="card w-51 mx-auto mt-4 shadow-lg">

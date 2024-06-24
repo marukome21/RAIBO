@@ -1,4 +1,4 @@
-<h1><%= link_to "⇚", posts_path %> </h1>
+<h1 style="padding-top: 70px;"><%= link_to "⇚", posts_path %></h1>
 <div class="card-list-container py-5">
   <div class="card w-51 mx-auto mt-4 shadow-lg">
     <div class="card-body">
@@ -14,7 +14,7 @@
             <% if @post.user == current_user %>
               <%= link_to "削除", post_path(@post.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "本当に消しますか？"} %>
             <% elsif current_user.following?(@user) %>
-              <%= link_to "フォロー外す", user_followings_path(@user.id), method: :delete, class: 'btn btn-primary' %>
+              <%= link_to "フォロー中", user_followings_path(@user.id), method: :delete, class: 'btn btn-secondary' %>
             <% else %>
               <%= link_to "フォローする", user_followings_path(@user.id), method: :post, class: 'btn btn-success' %>
             <% end %>

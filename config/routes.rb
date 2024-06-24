@@ -23,9 +23,11 @@ Rails.application.routes.draw do
 
 
 
+
   scope module: 'public' do
     resources :users, only:[] do
-      get 'followings' => 'followings#followings', as: 'followindex'
+      get 'likes/', to: 'likes#index', as: :likes_index #いいね一覧
+      get 'followings' => 'followings#followings', as: 'follow_index'
       get 'followers' => 'followings#followers', as: 'followers'
       resource :followings, only: [:create, :destroy]
     end
