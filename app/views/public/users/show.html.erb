@@ -1,6 +1,6 @@
 <h1 style="padding-top: 70px;"><%= link_to "⇚", posts_path %> </h1>
 
-<div class="card-list-container py-5">
+<div class="card-list-container">
   <div class="card w-51 mx-auto mt-4 shadow-lg">
     <div class="card-body">
       <div class="card-title">
@@ -27,27 +27,28 @@
           </div>
         </div>
         <div class="row pt-5">
-          フォロー
-          <%= link_to user_follow_index_path(@user.id) do %>
-            <%= @user.relationships.count %>
-          <% end %>
-          フォロワー
-          <%= link_to user_followers_path(@user.id) do %>
-            <%= @user.followers.count %>
-          <% end %>
+          <div class="col-3">
+            フォロー
+            <%= link_to user_follow_index_path(@user.id) do %>
+              <%= @user.relationships.count %>
+            <% end %>
+            フォロワー
+            <%= link_to user_followers_path(@user.id) do %>
+              <%= @user.followers.count %>
+            <% end %>
+            <%= link_to user_likes_index_path(@user.id), class: "btn btn-outline-info btn-block mt-3" do %>
+              <i class="fa-solid fa-hand-holding-heart"></i>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div>
-  <%= link_to user_likes_index_path(@user.id) do %>
-    いいね一覧
-  <% end %>
-</div>
 
-<h2 class="text-center">POST一覧</h2>
+
+<h2 class="text-center mt-5">POST一覧</h2>
 <div class="card-list-container py-5">
   <% @posts.each do |posts| %>
     <div class="card w-51 mx-auto mt-4 shadow-lg">
