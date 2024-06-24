@@ -28,9 +28,10 @@
         </div>
         <div class="row">
           <% if @post.image.attached? %>
-            <%= image_tag @post.image, class: "card-img-top img-thumbnail"; %>
+            <%= image_tag @post.image, class: "card-img-top img-thumbnail mb-3" %>
           <% else %>
           <% end %>
+          <%= l @post.created_at %>
         </div>
         <div class="row mt-4" style="display: flex; justify-content: center; align-items: center; border-top: 1px solid lightgray; border-bottom: 1px solid lightgray;">
           <% if @post.liked_by?(current_user) %>
