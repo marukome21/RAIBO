@@ -4,7 +4,7 @@
   <% if user_signed_in? %>
     <div class="search_form">
       <%= form_with url: search_path, local: true, method: :get do |f| %>
-        <%= f.text_field :word, size: 50 %>
+        <%= f.text_field :word, size: 70 %>
         <%= f.select :range, options_for_select([['User'], ['Post']]) %>
         <%= f.submit "検索", class: "btn btn-primary" %>
       <% end %>
@@ -15,14 +15,14 @@
   <!--検索対象モデルがUserの時 -->
 
 <% if @range == "User" %>
-  <div class="container" style="display: flex; justify-content: center; align-items: center;">
+  <div class="container text-light mt-3" style="display: flex; justify-content: center; align-items: center;">
     <h2>Results index</h2>
   </div>
 
   <%= render 'public/users/user_index_list', users: @users %>
 <!--検索対象モデルがUserではない時(= 検索対象モデルがPostの時) -->
 <% elsif @range == "Post"%>
-  <div class="container" style="display: flex; justify-content: center; align-items: center;">
+  <div class="container text-light mt-3" style="display: flex; justify-content: center; align-items: center;">
     <h2>Results index</h2>
   </div>
 

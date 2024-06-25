@@ -1,4 +1,3 @@
-
 <div class="card-list-container py-5">
   <% posts.each do |post| %>
     <div class="card w-75 mx-auto mt-5 shadow-lg">
@@ -23,7 +22,7 @@
           </div>
           <%= link_to post_path(post.id) do %>
             <div class="row py-5">
-              <div class="card-text pl-3">
+              <div class="card-text pl-5">
                 <%= post.post_text %>
               </div>
             </div>
@@ -53,5 +52,6 @@
     </div>
   <% end %>
 </div>
-
-<%= paginate posts %>
+<div  style="display: flex; justify-content: center; align-items: center;">
+  <%= paginate posts %>
+</div>

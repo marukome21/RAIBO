@@ -6,15 +6,15 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)       #データを新規登録するためのインスタンス生成
-    if @post.save                       #データをデータベースに保存するためのsaveメソッド実行
-      redirect_to action: 'index'       #トップ画面へリダイレクト
+    if @post.save                                       #データをデータベースに保存するためのsaveメソッド実行
+      redirect_to action: 'index'                       #トップ画面へリダイレクト
     else
       render 'new'
     end
   end
 
   def index
-    @posts = Kaminari.paginate_array(Post.all.reverse).page(params[:page]).per(8)
+    @posts = Kaminari.paginate_array(Post.all.reverse).page(params[:page]).per(10)
   end
 
   def show

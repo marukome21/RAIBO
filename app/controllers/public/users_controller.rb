@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = Kaminari.paginate_array(@user.posts.all.reverse).page(params[:page]).per(2)
+    @posts = Kaminari.paginate_array(@user.posts.all.reverse).page(params[:page]).per(10)
   end
 
   def edit

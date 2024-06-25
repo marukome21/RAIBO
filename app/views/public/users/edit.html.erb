@@ -1,8 +1,8 @@
 <h1 style="padding-top: 70px;"><%= link_to '⇚', 'javascript:history.back()' %></h1>
 
-<h3 class="col-md-3 my-5 text-center">プロフィール編集</h3>
+<h3 class="col-md-3 my-5 text-center text-light">プロフィール編集</h3>
   <%= form_with model: @user, url: update_users_information_path, method: :patch do |f| %>
-  <table class="table table-borderless">
+  <table class="table table-borderless text-light">
     <tr>
       <td>ユーザー名</td>
       <td><%= f.text_field :user_name, class: "form-control" %></td>

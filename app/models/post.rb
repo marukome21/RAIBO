@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
-  validates :post_text, presence: true
+  validates :post_text, presence: true, length: { maximum: 65 }
 
 # 検索方法分岐
   def self.looks(search, word)

@@ -1,4 +1,3 @@
-
 <h1 style="padding-top: 70px;"><%= link_to '⇚', 'javascript:history.back()' %></h1>
 
 <div class="card-list-container">
@@ -49,13 +48,13 @@
           <% end %>
         </div>
         <div class="row pt-5">
-          <div class="col-9">
-          <%= form_with model: [@post, @comment] do |f| %>
-            <%= f.text_field :comment_text, size: 60, placeholder: "コメントをここに" %>
-          </div>
-          <div class="col-3">
-          <%= f.submit "返信", class: "btn btn-outline-info btn-block" %>
-          <% end %>
+          <div class="col">
+            <%= form_with model: [@post, @comment] do |f| %>
+              <div class="form-group">
+                <%= f.text_field :comment_text, size: 75, placeholder: "コメントをここに"%>
+                <%= f.submit "返信", class: "btn btn-outline-info btn-sm mb-1" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
