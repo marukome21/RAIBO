@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:edit]  #before_actionでeditアクション実行前に処理を行う
+  before_action :ensure_guest_user, only: [:edit, :update, :unsubscribe, :withdraw]  #before_actionでeditアクション実行前に処理を行う
 
   def show
     @user = User.find(params[:id])
