@@ -4,6 +4,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
-  validates :comment_text, presence: true, length: { maximum: 65 }
+  validates :comment_text, presence: true, length: { maximum: 140 }
 
 end
