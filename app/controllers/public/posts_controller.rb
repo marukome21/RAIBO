@@ -14,8 +14,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
-    @posts = @posts.reverse
+    @posts = Kaminari.paginate_array(Post.all.reverse).page(params[:page]).per(2)
   end
 
   def show

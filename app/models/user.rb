@@ -14,7 +14,8 @@ class User < ApplicationRecord
   has_many :relationships, through: :followings, source: :followee
   has_many :followers, through: :reverse_of_followings, source: :follower
 
-
+  #validates :user_name, presence: true, uniqueness: true
+  #validates :email, presence: true, uniqueness: true
 
   has_one_attached :user_image
 
