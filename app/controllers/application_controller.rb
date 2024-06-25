@@ -15,4 +15,16 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name]) # 新規登録時(sign_up時)にnameというキーのパラメーターを追加で許可する
   end
+
+
+  private
+
+  def reset_guest_data
+    guest_user = User.find_by(email: "guest@example.com")
+    guest_user.posts.destroy_all if guest_user.posts.any?
+    guest_user.comments.destroy_all if guest_user.comments.any?
+    guest_user.followings.destroy_all if guest_user.followings.any?
+    guest_user.likes.destroy_all if guest_user.likes.any?
+  end
+
 end
