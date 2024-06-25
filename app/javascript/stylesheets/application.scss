@@ -1,3 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
 
 
+body {
+  background-image: url('./images/muscular-young-man-lifting-weights-on-black-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}

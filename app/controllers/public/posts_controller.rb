@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Kaminari.paginate_array(Post.all.reverse).page(params[:page]).per(2)
+    @posts = Kaminari.paginate_array(Post.all.reverse).page(params[:page]).per(8)
   end
 
   def show
@@ -27,7 +27,7 @@ class Public::PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    post.delete
+    post.destroy
     redirect_to posts_path
   end
 

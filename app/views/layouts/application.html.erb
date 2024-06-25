@@ -15,8 +15,7 @@
     <% if user_signed_in? %>
       <header>
         <nav class="navbar pm-5 img-thumbnail fixed-top" style="background-color: #adb5bd;">
-          <div class="container-fluid justify-content-center">
-              <%= image_tag("RAIBO.jpeg", class: "", style: "width: 100px; height: 50px;")%>
+          <%= image_tag("RAIBO.jpeg", class: "navbar-brand", style: "width: 100px; height: 50px;")%>
             <button class="btn btn-outline-emphasis me-2" type="button">
               <%= link_to posts_path, class: "nav-link" do %><i class="fa-solid fa-house"></i><% end %>
             </button>
@@ -34,11 +33,10 @@
             <button class="btn btn-outline-emphasis me-2" type="button">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %><i class="fa-solid fa-right-from-bracket"></i><% end %>
             </button>
-          </div>
         </nav>
       </header>
     <% end %>
-    <main class="mb-auto">
+    <main class="mb-auto test">
       <%= yield %>
     </main>
     <footer>
