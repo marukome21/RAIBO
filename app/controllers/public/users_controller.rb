@@ -1,14 +1,17 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :edit, :update, :unsubscribe, :withdraw]
-  before_action :ensure_guest_user, only: [:edit]  #before_actionでeditアクション実行前に処理を行う
+  before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit, :update, :unsubscribe, :withdraw]  #before_actionでeditアクション実行前に処理を行う
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = Kaminari.paginate_array(@user.posts.all.reverse).page(params[:page]).per(10)
   end
 
   def edit
     @user = current_user
+    unless current_user.id == @user.id
+      redirect_to request.referer
+    end
   end
 
   def update

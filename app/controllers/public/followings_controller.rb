@@ -1,4 +1,5 @@
 class Public::FollowingsController < ApplicationController
+  before_action :authenticate_user!
 
   # フォローするとき
   def create
@@ -13,12 +14,12 @@ class Public::FollowingsController < ApplicationController
   # フォロー一覧
   def followings
     @user = User.find(params[:user_id])
-    @users = @user.relationships
+    @users = @user.relationships.page(params[:page]).per(10)
   end
   # フォロワー一覧
   def followers
     @user = User.find(params[:user_id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page]).per(10)
   end
 
 end

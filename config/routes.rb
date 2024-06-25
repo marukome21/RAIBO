@@ -15,13 +15,7 @@ Rails.application.routes.draw do
   get 'users/unsubscribe', to: 'public/users#unsubscribe', as: :users_unsubscribe
   patch 'users/withdraw', to: 'public/users#withdraw', as: :users_withdraw
   get 'users/my_page/:id', to: 'public/users#show', as: :users_my_page
-
-
   get 'search/', to: 'searches#search', as: :search #検索ページ
-
-
-
-
 
 
   scope module: 'public' do
@@ -43,7 +37,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    resources :users, only: [:index, :edit, :update, :show, :destroy]
+    resources :users, only: [:edit, :update, :show, :destroy]
   end
 
 end

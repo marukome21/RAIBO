@@ -1,25 +1,7 @@
-<h1 style="padding-top: 70px;"><%= link_to "⇚", users_my_page_path(@user) %> </h1>
+<h1 style="padding-top: 70px;"><%= link_to '⇚', 'javascript:history.back()' %></h1>
 
-<div class="card-list-container py-5">
-  <% @users.each do |user| %>
-    <div class="card w-50 mx-auto mt-4 shadow-lg">
-      <div class="card-body">
-        <%= link_to users_my_page_path(user.id) do %>
-          <div class="card-title">
-            <div class="row">
-              <div class="col-10">
-                <%= image_tag user.get_user_image(100,100), class: "mt-3 rounded-circle img-thumbnail"; %>
-                <strong><%= user.user_name %></strong>
-              </div>
-            </div>
-            <div class="row py-5">
-              <div class="card-text pl-3">
-                <%= user.profile %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+<div class="container text-light" style="display: flex; justify-content: center; align-items: center;">
+    <h2>Following</h2>
 </div>
+
+<%= render 'public/users/user_index_list', users: @users %>
