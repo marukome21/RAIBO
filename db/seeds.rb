@@ -1,3 +1,5 @@
+puts "seedの実行を開始"
+
 Admin.find_or_create_by!(email: "admin@admin") do |admin|
   admin.password = "testtest"
 end
@@ -75,3 +77,6 @@ end
 Post.find_or_create_by!(post_text: "我慢できなかった～、また明日がんばろう！") do |post|
   post.user_id = 4
 end
+
+
+puts "seedの実行が完了しました"

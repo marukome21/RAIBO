@@ -12,16 +12,21 @@
             </div>
             <div class="text-right pt-4">
               <% if post.user == current_user %>
-                <%= link_to "削除", post_path(post.id), method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "本当に消しますか？"} %>
+                <%= link_to "削除", post_path(post.id), method: :delete, class:"btn btn-sm btn-danger ml-5", data: {confirm: "本当に消しますか？"} %>
               <% elsif current_user.following?(post.user) %>
-                <%= link_to "フォロー中", user_followings_path(post.user.id), method: :delete, class: 'btn btn-secondary' %>
+                <%= link_to "フォロー中", user_followings_path(post.user.id), method: :delete, class: 'btn btn-secondary btn-sm' %>
               <% else %>
-                <%= link_to "フォロー", user_followings_path(post.user.id), method: :post, class: 'btn btn-success' %>
+                <%= link_to "フォロー", user_followings_path(post.user.id), method: :post, class: 'btn btn-success btn-sm' %>
               <% end %>
             </div>
           </div>
+          <div class="row">
+            <div class="col-2 offset-sm-10 text-right btn-secondary text-center btn-sm">
+              <%= l post.created_at, format: :short %>
+            </div>
+          </div>
           <%= link_to post_path(post.id) do %>
-            <div class="row py-5">
+            <div class="row py-4">
               <div class="card-text pl-3">
                 <%= post.post_text %>
               </div>
@@ -33,7 +38,7 @@
               <%end%>
             </div>
           <% end %>
-          <div class="row mt-4" style="display: flex; justify-content: center; align-items: center;">
+          <div class="row pt-4" style="display: flex; justify-content: center; align-items: center;">
             <% if post.liked_by?(current_user) %>
               <%= link_to post_likes_path(post), method: :delete do %>
                 <i class="fa-solid fa-heart"></i><%= post.likes.count %>
