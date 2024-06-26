@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'search/', to: 'searches#search', as: :search #検索ページ
 
 
+
   scope module: 'public' do
     resources :users, only:[] do
       get 'likes/', to: 'likes#index', as: :likes_index #いいね一覧
@@ -39,5 +40,30 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :users, only: [:edit, :update, :show, :destroy]
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  get 'secret',to: 'public/homes#secret', as: :secret
 
 end
