@@ -1,14 +1,13 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
   <div>
-    <h1 class="pt-5 pl-5 text-center">本当に退会しますか？</h1>
-    <p class="pt-5 pl-5 text-center">
+    <h1 class="pl-5 text-center text-light">本当に退会しますか？</h1>
+    <p class="pt-5 pl-5 text-center text-light">
       退会すると、会員登録情報や<br>
       これまでのPOSTが閲覧できなくなります。<br>
       退会する場合は、「退会する」をクリックしてください。
     </p>
-
     <div class="text-center">
-      <%= link_to "退会しない", users_my_page_path, class: "btn btn-primary ms-3 ml-5" %>
+      <%= link_to "退会しない", users_my_page_path(current_user), class: "btn btn-primary ms-3 ml-5" %>
       <%= link_to "退会する", users_withdraw_path, method: :patch, class: "btn btn-danger ms-3 ml-5", data: { confirm: "本当に退会しますか？" } %>
     </div>
   </div>

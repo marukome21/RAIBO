@@ -8,6 +8,11 @@ class Public::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to posts_path#, notice: 'guestuserでログインしました。'#フラッシュメッセージ
   end
+
+  def destroy
+    reset_guest_data if current_user.email == "guest@example.com"
+    super
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

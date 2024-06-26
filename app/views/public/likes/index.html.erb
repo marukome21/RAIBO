@@ -1,0 +1,7 @@
+<h1 style="padding-top: 70px;"><%= link_to '⇚', 'javascript:history.back()' %></h1>
+
+<div class="container text-light" style="display: flex; justify-content: center; align-items: center;">
+  <h2>Likes</h2>
+</div>
+
+<%= render 'public/posts/post_index_list', posts: @like_posts %>

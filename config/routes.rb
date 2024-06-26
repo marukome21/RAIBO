@@ -14,11 +14,22 @@ Rails.application.routes.draw do
   patch 'users/information', to: 'public/users#update', as: 'update_users_information'
   get 'users/unsubscribe', to: 'public/users#unsubscribe', as: :users_unsubscribe
   patch 'users/withdraw', to: 'public/users#withdraw', as: :users_withdraw
-  get 'users/my_page', to: 'public/users#show', as: :users_my_page
+  get 'users/my_page/:id', to: 'public/users#show', as: :users_my_page
+  get 'search/', to: 'searches#search', as: :search #検索ページ
+
 
 
   scope module: 'public' do
-    resources :posts, only: [:show, :index, :create, :destroy, :new]
+    resources :users, only:[] do
+      get 'likes/', to: 'likes#index', as: :likes_index #いいね一覧
+      get 'followings' => 'followings#followings', as: 'follow_index'
+      get 'followers' => 'followings#followers', as: 'followers'
+      resource :followings, only: [:create, :destroy]
+    end
+    resources :posts, only: [:show, :index, :create, :destroy, :new] do
+      resources :comments, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy]
+    end
   end
 
   devise_scope :user do
@@ -27,7 +38,32 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    resources :users, only: [:index, :edit, :update, :show, :destroy]
+    resources :users, only: [:edit, :update, :show, :destroy]
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  get 'secret',to: 'public/homes#secret', as: :secret
 
 end

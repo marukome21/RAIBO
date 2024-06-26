@@ -1,35 +1,39 @@
-<h1>ここは管理者側のトップページ！</h1>
+<h1 class="text-light">管理者側のトップページ</h1>
 
-<h3><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link" %></h3>
+<h3 class="text-light"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link" %></h3>
 <div class="container pt-5">
   <div class="row gy-5" style="display: flex; justify-content: space-between;">
-    <div class="col-md-4 px-4">
-      <p><strong>ユーザー一覧</strong></p>
+    <div class="col-md-4 px-4 text-light">
+      <h2><strong>ユーザー一覧</strong></h2>
     </div>
    </div>
 
   <div class="row">
     <div class="col">
-      <table class="table mt-5">
+      <table class="table mt-5 text-light">
         <thead class="thead">
         <tr>
           <th>会員ID</th>
           <th>氏名</th>
-          <th>メールアドレス</th>
+          <th>プロフィール</th>
           <th>ステータス</th>
         </tr>
       </thead>
         <% @users.each do |users| %>
           <tr>
-            <td><%= users.id %></td>
-            <td><%= link_to users.user_name, admin_user_path(users) %>
+            <td><%= users.id %>　　　　</td>
+            <td><%= link_to users.user_name, admin_user_path(users) %></td>
             <td><%= users.profile %></td>
-            <td><span style="color:<%= users.is_active ? 'green' : 'gray' %>;"><%= users.is_active ? "有効":"退会" %></span></td>
+            <td><span style="color:<%= users.is_active ? 'green' : 'red' %>;"><%= users.is_active ? "有効":"退会" %></span>　　　　</td>
           </tr>
         <% end %>
       </table>
     </div>
   </div>
+</div>
+
+<div class="mt-4" style="display: flex; justify-content: center; align-items: center;">
+  <%= paginate @users %>
 </div>
 
 

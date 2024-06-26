@@ -1,8 +1,9 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = Kaminari.paginate_array(@user.posts.all.reverse).page(params[:page]).per(10)
   end
 
   def edit
@@ -10,7 +11,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    #まだバリデーション設定してないので名前がからっぽでも編集できちゃいます！
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to admin_user_path(@user)#, notice: "会員情報を更新しました。"
@@ -22,7 +22,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     user = post.user_id
-    post.delete
+    post.destroy
     redirect_to admin_user_path(user)
   end
 

@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @post = Post.new
@@ -6,27 +7,28 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)       #データを新規登録するためのインスタンス生成
-    if @post.save                       #データをデータベースに保存するためのsaveメソッド実行
-      redirect_to action: 'index'       #トップ画面へリダイレクト
+    if @post.save                                       #データをデータベースに保存するためのsaveメソッド実行
+      redirect_to action: 'index'                       #トップ画面へリダイレクト
     else
       render 'new'
     end
   end
 
   def index
-    @posts = Post.all
-    @posts = @posts.reverse
+    @posts = Kaminari.paginate_array(Post.all.reverse).page(params[:page]).per(10)
   end
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
+    @comment = Comment.new
   end
 
 
 
   def destroy
     post = Post.find(params[:id])
-    post.delete
+    post.destroy
     redirect_to posts_path
   end
 
