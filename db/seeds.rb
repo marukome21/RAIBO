@@ -40,7 +40,7 @@ Post.find_or_create_by!(post_text: "２３時間ジムですごいムキムキ�
   post.user_id = 1
 end
 
-Post.find_or_create_by!(post_text: "今日からローファットだなぁ") do |post|
+Post.find_or_create_by!(post_text: "今日からローファットだ！") do |post|
   post.user_id = 2
 end
 
