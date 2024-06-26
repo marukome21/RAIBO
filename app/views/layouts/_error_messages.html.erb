@@ -1,0 +1,10 @@
+<div class="container mt-5 text-light">
+  <% if xxxx.errors.any? %>
+    <%= xxxx.errors.count %>件のエラーが発生しました
+    <ul>
+      <% xxxx.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

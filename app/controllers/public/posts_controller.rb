@@ -1,14 +1,15 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_matching_login_user_post, only: [:destroy]
 
   def new
     @post = Post.new
   end
 
   def create
-    @post = current_user.posts.build(post_params)       #データを新規登録するためのインスタンス生成
-    if @post.save                                       #データをデータベースに保存するためのsaveメソッド実行
-      redirect_to action: 'index'                       #トップ画面へリダイレクト
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      redirect_to posts_path
     else
       render 'new'
     end
@@ -36,6 +37,13 @@ class Public::PostsController < ApplicationController
 
   def post_params #postのストロングパラメータ
     params.require(:post).permit(:post_text, :image) #パラメーターのキー
+  end
+
+  def is_matching_login_user_post
+    post = Post.find(params[:id])
+    unless post.user.id == current_user.id
+      redirect_to posts_path
+    end
   end
 
 end

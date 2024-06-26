@@ -16,8 +16,11 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to users_my_page_path(current_user.id)
+    if @user.update(user_params)
+      redirect_to users_my_page_path(current_user.id)
+    else
+      render 'edit'
+    end
   end
 
   def unsubscribe
@@ -31,6 +34,8 @@ class Public::UsersController < ApplicationController
     #flash[:withdraw] = "退会処理を実行いたしました"
     redirect_to root_path
   end
+
+
 
   private
 
