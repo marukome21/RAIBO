@@ -18,7 +18,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def reset_guest_data　# ゲストユーザーがログアウトした時の処理
+  # ゲストユーザーのログアウト後の処理
+
+  def reset_guest_data
     guest_user = User.find_by(email: "guest@example.com")
     guest_user.posts.destroy_all if guest_user.posts.any?
     guest_user.comments.destroy_all if guest_user.comments.any?
