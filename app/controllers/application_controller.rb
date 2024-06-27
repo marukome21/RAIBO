@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(Admin)
       admin_root_path     # 管理者ログイン後のリダイレクト先
     else
-      posts_path
+      posts_path           # ユーザーログイン後のリダイレクト先
     end
   end
 
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def reset_guest_data
+  def reset_guest_data　# ゲストユーザーがログアウトした時の処理
     guest_user = User.find_by(email: "guest@example.com")
     guest_user.posts.destroy_all if guest_user.posts.any?
     guest_user.comments.destroy_all if guest_user.comments.any?
