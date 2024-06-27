@@ -1,9 +1,8 @@
 <h1 style="padding-top: 70px;"><%= link_to '⇚', 'javascript:history.back()' %></h1>
 
-<%= render 'layouts/error_messages', xxxx: @user %>
 
 <h3 class="col-md-5 my-5 text-center text-light">プロフィール編集</h3>
-  <%= form_with model: @user, url: update_users_information_path, method: :patch do |f| %>
+<%= form_with model: @user, url: update_users_information_path, method: :patch do |f| %>
   <table class="table table-borderless text-light">
     <tr>
       <td>ユーザー名</td>
@@ -22,7 +21,7 @@
       <td>メールアドレス</td>
       <td><%= f.text_field :email, placeholder: "メールアドレスは空けないでください", class: "form-control" %></td>
     </tr>
-    <tr>
+     <tr>
       <td></td>
       <td>
         <%= f.submit "プロフィール変更を保存", class:"btn btn-success" %>
@@ -30,4 +29,4 @@
       </td>
     </tr>
   </table>
-  <% end %>
+<% end %>
