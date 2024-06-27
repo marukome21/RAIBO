@@ -2,13 +2,14 @@
 
 class Public::SessionsController < Devise::SessionsController
 
-
+  #ゲストユーザーがログインした時のリダイレクト処理
   def guest_sign_in
     user = User.guest
     sign_in user
     redirect_to posts_path    #, notice: 'guestuserでログインしました。'#フラッシュメッセージ
   end
 
+  #ゲストユーザーがログアウトする際の処理
   def destroy
     reset_guest_data if current_user.email == "guest@example.com"
     super
