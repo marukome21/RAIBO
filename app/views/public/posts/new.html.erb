@@ -12,14 +12,14 @@
         <%= form.text_area :post_text, placeholder: "今日はどんなことがありました？", class: "form-control form-control-lg" %> <!--bodyの入力フォーム生成-->
       </div>
       <div class="form-group row text-light">
-        <%= form.label :image %>
+        <%= form.label :image do %>
+          <h1>image<i class="fa-solid fa-image text-primary ml-1" style="cursor: pointer"></i></h1>
+        <% end %>
         <%= form.file_field :image, accept: "image/*", class: "form-control" %>
       </div>
       <div class="form-group row text-center pt-5">
         <div class="col-sm-7 offset-sm-2">
-
             <%= form.submit "Post", class: "btn btn-primary d-grid gap-2 col-5" %>
-
         </div>
       </div>
     <% end %>
