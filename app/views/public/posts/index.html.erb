@@ -7,11 +7,13 @@
           <div class="card-title">
             <div class="row">
               <div class="col-10">
+                <!--ここからユーザー画像、ネーム表示-->
                 <%= link_to users_my_page_path(post.user.id) do %>
                   <%= image_tag post.user.get_user_image(100,100), class: "mt-3 rounded-circle img-thumbnail "; %>
                   <strong><%= post.user.user_name %></strong>
                 <% end %>
               </div>
+              <!--ここから削除、フォロー機能-->
               <div class="text-right pt-4">
                 <% if post.user == current_user %>
                   <%= link_to "削除", post_path(post.id), method: :delete, class:"btn btn-sm btn-danger ml-4", data: {confirm: "本当に消しますか？"} %>
@@ -22,17 +24,20 @@
                 <% end %>
               </div>
             </div>
+            <!--投稿日時表示機能-->
             <div class="row">
               <div class="col-3 offset-sm-9 text-right btn-secondary text-center btn-sm">
                 <%= l post.created_at, format: :short %>
               </div>
             </div>
+            <!--ここからテキスト表示-->
             <%= link_to post_path(post.id) do %>
               <div class="row py-4">
                 <div class="card-text pl-3">
                   <%= post.post_text %>
                 </div>
               </div>
+              <!--ここから投稿画像表示機能-->
               <div class="row">
                 <% if post.image.attached? %>
                   <%= image_tag post.image, class: "card-img-top img-thumbnail"; %>
@@ -40,6 +45,7 @@
                 <%end%>
               </div>
             <% end %>
+            <!--ここからいいね、コメント数表示機能-->
             <div class="row mt-4" style="display: flex; justify-content: center; align-items: center;">
               <% if post.liked_by?(current_user) %>
                 <%= link_to post_likes_path(post), method: :delete do %>

@@ -1,9 +1,12 @@
 puts "seedの実行を開始"
 
+#管理者側の設定
+
 Admin.find_or_create_by!(email: "admin@admin") do |admin|
   admin.password = "testtest"
 end
 
+#ユーザーの設定
 
 User.find_or_create_by!(email: "yanbaru@example.com") do |user|
   user.user_name = "頑張るクイナ"
@@ -29,6 +32,7 @@ User.find_or_create_by!(email: "tiniuetakemono@example.com") do |user|
   user.profile = "ダイエットはお腹が減りますね"
 end
 
+#ユーザーの投稿データ設定
 
 Post.find_or_create_by!(post_text: "サイドレイズが効く～") do |post|
   post.user_id = 1

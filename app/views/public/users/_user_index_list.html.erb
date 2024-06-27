@@ -5,11 +5,13 @@
           <div class="card-title">
             <div class="row">
               <div class="col-10">
+                <!--ユーザー画像、ユーザー名表示機能-->
                 <%= link_to users_my_page_path(user.id) do %>
                   <%= image_tag user.get_user_image(100,100), class: "mt-3 rounded-circle img-thumbnail"; %>
                   <strong><%= user.user_name %></strong>
                 <% end %>
               </div>
+              <!--フォロ―機能-->
               <div class="text-right pt-4">
                 <% if current_user.following?(user) %>
                   <%= link_to "フォロー中", user_followings_path(user.id), method: :delete, class: 'btn btn-secondary btn-sm' %>
@@ -20,6 +22,7 @@
                 <% end %>
               </div>
             </div>
+            <!--ユーザープロフィール表示-->
             <div class="row pt-4">
               <div class="card-text pl-3">
                 <%= user.profile %>
