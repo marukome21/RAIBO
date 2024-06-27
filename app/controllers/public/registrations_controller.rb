@@ -9,10 +9,13 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |resource|
+      if resource.errors.any?
+        redirect_to new_user_registration_path and return
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +62,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+
 end

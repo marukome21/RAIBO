@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  #get "users" => redirect("/users/sign_up")
+
   devise_for :user, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -16,7 +18,6 @@ Rails.application.routes.draw do
   patch 'users/withdraw', to: 'public/users#withdraw', as: :users_withdraw
   get 'users/my_page/:id', to: 'public/users#show', as: :users_my_page
   get 'search/', to: 'searches#search', as: :search #検索ページ
-
 
 
   scope module: 'public' do
