@@ -38,7 +38,7 @@
               <%end%>
             </div>
           <% end %>
-          <div class="row pt-4" style="display: flex; justify-content: center; align-items: center;">
+          <div class="row mt-4" style="display: flex; justify-content: center; align-items: center;">
             <% if post.liked_by?(current_user) %>
               <%= link_to post_likes_path(post), method: :delete do %>
                 <i class="fa-solid fa-heart"></i><%= post.likes.count %>
