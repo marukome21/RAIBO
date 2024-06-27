@@ -9,7 +9,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def create
+  def create  #新規登録時にバリデーションによる再リロード時にURLが変わってしまうエラーの対策
     super do |resource|
       if resource.errors.any?
         redirect_to new_user_registration_path and return

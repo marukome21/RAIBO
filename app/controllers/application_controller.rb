@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
 
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(resource)    #ログイン先を指定
     if resource.is_a?(Admin)
-      admin_root_path     # 管理者ログイン後のリダイレクト先
+      admin_root_path                     #管理者側ログインのリダイレクト先
     else
-      posts_path           # ユーザーログイン後のリダイレクト先
+      posts_path                          #ユーザー側ログインのリダイレクト先
     end
   end
 

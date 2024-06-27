@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   end
 
 
-
+#いいねした投稿にユーザーのIDがあるか調べるメソッド
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end

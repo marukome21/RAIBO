@@ -7,11 +7,12 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+#フォローテーブルに関する中間テーブル機能
   has_many :followings, class_name: "Following", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_followings, class_name: "Following", foreign_key: "followee_id", dependent: :destroy
   has_many :relationships, through: :followings, source: :followee
   has_many :followers, through: :reverse_of_followings, source: :follower
-
+#ユーザー名とメールアドレスに一意性を付与
   validates :user_name, presence: true, uniqueness: true, length: { minimum: 1, maximum: 20 }
   validates :email, presence: true, uniqueness: true
   validates :profile, length: { maximum: 160 }
@@ -37,6 +38,7 @@ class User < ApplicationRecord
       @user = User.where("user_name LIKE?","%#{word}%")
   end
 
+  #ユーザー画像の設定、ユーザーが画像登録していない際にあらかじめに用意した画像がユーザー画像になるメソッド
   def get_user_image(width, height)
     unless user_image.attached?
       file_path = Rails.root.join('app/assets/images/images.jpg')
@@ -49,6 +51,7 @@ class User < ApplicationRecord
     super && (is_active == true)
   end
 
+#ゲストユーザーの生成設定
   def self.guest
     find_or_create_by!(user_name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
