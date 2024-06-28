@@ -39,6 +39,9 @@
 ## 使用素材
 
 ・いらすとや　筋トレのイラスト「ダンベルを持ち上げる男性」
+
 ・Freepik　黒の背景にウェイトを持ち上げる筋肉の若い男　著作者：serhii_bobyk
+
 ・Font Awesome!　house, magnifying-glass, user, circle-plus, right-from-bracket, comment, heart, user-pen
+
 ・Adobe Expressで製作したロゴ　
