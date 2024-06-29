@@ -27,7 +27,17 @@
 
 ## 設計書
 
-後ほど作成予定
+UI Flows：  https://drive.google.com/file/d/1SkfGhISp6vbMihX7_Zqr4SZy0zfZRRMi/view?usp=sharing
+
+ER図：  https://drive.google.com/file/d/1z3sSmpvQ6gCwQVLFI5fX88uxkyrFKKqh/view?usp=sharing
+
+テーブル定義書：  https://docs.google.com/spreadsheets/d/10v20IzqE3EAk7ZXEf25u9uJ2GD5WscNpfKx_8tJOMTI/edit?usp=sharing
+
+実装機能リスト：  https://docs.google.com/spreadsheets/d/1bFwR6oSohhw6_dDX1RSvfckN_hy2pmbjlG4N5SzntTk/edit?usp=sharing
+
+アプリケーション詳細設計書：  https://docs.google.com/spreadsheets/d/1E2-7rhQtk7xyQ_qDss8mpL7vQwbnlNyIcZl3THUKRIo/edit?usp=sharing
+
+WBS:  https://docs.google.com/spreadsheets/d/1lpHrjYZHSK6kqC4pH0GgJpN9StLbrJ64cFxPcqqYjtM/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
