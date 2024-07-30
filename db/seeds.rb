@@ -9,7 +9,7 @@ end
 #ユーザーの設定
 
 User.find_or_create_by!(email: "yanbaru@example.com") do |user|
-  user.user_name = "頑張るクイナ"
+  user.user_name = "エクササイズ太郎"
   user.password = "password"
   user.profile = "毎日がんばるぞ！"
 end
@@ -21,15 +21,15 @@ User.find_or_create_by!(email: "mukimuki@example.com") do |user|
 end
 
 User.find_or_create_by!(email: "mensisu@example.com") do |user|
-  user.user_name = "体脂肪率20%以下を目指すメンシス派"
+  user.user_name = "ダンベル君"
   user.password = "password"
-  user.profile = "マジェスティック！！！"
+  user.profile = "重いダンベルは８レップを意識！！！"
 end
 
 User.find_or_create_by!(email: "tiniuetakemono@example.com") do |user|
-  user.user_name = "カロリーに飢えた獣"
+  user.user_name = "カロリーには気をつけろ"
   user.password = "password"
-  user.profile = "ダイエットはお腹が減りますね"
+  user.profile = "カロリーには気をつけろ"
 end
 
 #ユーザーの投稿データ設定
