@@ -60,7 +60,7 @@
           <div class="col">
             <%= form_with model: [@post, @comment] do |f| %>
               <div class="form-group">
-                <%= f.text_field :comment_text, style: "width:90%", placeholder: "コメントを返信"%>
+                <%= f.text_field :comment_text, style: "width:90%", placeholder: "コメントは140文字まで"%>
                 <%= f.submit "返信", class: "btn btn-outline-info btn-sm mb-1" %>
               </div>
             <% end %>
