@@ -58,4 +58,5 @@ WBS:  https://docs.google.com/spreadsheets/d/1lpHrjYZHSK6kqC4pH0GgJpN9StLbrJ64cF
 ・Adobe Expressで製作したロゴ　
 
 ## ホーム画面画像
-![スクリーンショット 2024-08-13 180748](https://github.com/user-attachments/assets/0b0a6aff-5f5b-41c9-b879-8c772f24f51c)
+
+![スクリーンショット 2024-08-13 181504](https://github.com/user-attachments/assets/94aa5c1b-b5a4-4ce8-b3a1-2b41fa3b03d3)
