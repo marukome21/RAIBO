@@ -56,3 +56,6 @@ WBS:  https://docs.google.com/spreadsheets/d/1lpHrjYZHSK6kqC4pH0GgJpN9StLbrJ64cF
 ・Font Awesome!　house, magnifying-glass, user, circle-plus, right-from-bracket, comment, heart, user-pen
 
 ・Adobe Expressで製作したロゴ　
+
+## ホーム画面画像
+![スクリーンショット 2024-08-13 180748](https://github.com/user-attachments/assets/0b0a6aff-5f5b-41c9-b879-8c772f24f51c)
